@@ -53,9 +53,7 @@ const App = () => {
     </div>
   )
 
- 
 }
 
-// <Course course={courses} />
 
 export default App
