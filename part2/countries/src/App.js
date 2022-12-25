@@ -26,21 +26,21 @@ const Weather = ({country}) => {
 
   if (weatherData !== '') {
 
-  const temp = (weatherData.main.temp - 273.15).toFixed(2)
-  const weatherIcon = 'http://openweathermap.org/img/wn/' + 
-    weatherData.weather[0].icon + '@2x.png'
-  const windSpeed = weatherData.wind.speed
+    const temp = (weatherData.main.temp - 273.15).toFixed(2)
+    const weatherIcon = 'http://openweathermap.org/img/wn/' + 
+      weatherData.weather[0].icon + '@2x.png'
+    const windSpeed = weatherData.wind.speed
 
-  return (
-    <div>
-      <h3>Weather in {country.capital}</h3>
-      temperature {temp} Celsius <br></br>
-      <img src = {weatherIcon}
-        alt = "Weather icon"
-      ></img><br></br>
-      wind {windSpeed} m/s
-    </div>
-  )
+    return (
+      <div>
+        <h3>Weather in {country.capital}</h3>
+        temperature {temp} Celsius <br></br>
+        <img src = {weatherIcon}
+          alt = "Weather icon"
+        ></img><br></br>
+        wind {windSpeed} m/s
+      </div>
+    )
   }
 }
 
