@@ -22,6 +22,7 @@ mongoose.set('strictQuery', false)
 mongoose
     .connect(url)
     .then((result) => {
+
         /*console.log('connected')
 
         const note = new Note ({
@@ -35,6 +36,8 @@ mongoose
         console.log(result)
         console.log('note saved!')
         return mongoose.connection.close() */
+
+        
         Note.find({}).then(result => {
             result.forEach(note => {
                 console.log(note)

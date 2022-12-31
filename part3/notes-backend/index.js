@@ -1,11 +1,26 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const mongoose = require('mongoose')
 
 
 app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
+
+const url = `mongodb+srv://fullstack:${password}@cluster0.9htvafn.mongodb.net/noteApp?retryWrites=true&w=majority`
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  date: Date,
+  important: Boolean
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
+mongoose.set('strictQuery', false)
+
+
 
 let notes = [
   {
