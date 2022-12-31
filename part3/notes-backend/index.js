@@ -2,13 +2,19 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
 
 app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
 
-const url = `mongodb+srv://fullstack:${password}@cluster0.9htvafn.mongodb.net/noteApp?retryWrites=true&w=majority`
+dotenv.config()
+
+console.log(process.env.DB_PASSWORD)
+
+const url = 
+`mongodb+srv://fullstack:${process.env.DB_PASSWORD}@cluster0.9htvafn.mongodb.net/noteApp?retryWrites=true&w=majority`
 
 const noteSchema = new mongoose.Schema({
   content: String,
