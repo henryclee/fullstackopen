@@ -1,0 +1,26 @@
+{
+  "name": "part3-1",
+  "version": "1.0.0",
+  "description": "fullstackopen example 3-1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ui": "rm -rf build && cd ../notes-frontend/ && npm run build && cp -r build ../notes-backend",
+    "deploy": "flyctl deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "flyctl logs"
+  },
+  "author": "Henry Lee",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
