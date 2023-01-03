@@ -54,6 +54,12 @@ const App = () => {
               setNotification(['','red'])
             }, 3000)
           })
+          .catch(error => {
+            setNotification([error.response.data.error, 'red'])
+            setTimeout(() => {
+              setNotification(['','red'])
+            }, 3000)
+          })
         }
     }
     else if (newName !== '') {
@@ -67,6 +73,13 @@ const App = () => {
           setNotification([`Added ${newName}`, 'green'])
           setNewName('')
           setNewNum('')
+          setTimeout(() => {
+            setNotification(['','red'])
+          }, 3000)
+        })
+        .catch(error => {
+          console.log('from app.js: ', error)
+          setNotification([error.response.data.error, 'red'])
           setTimeout(() => {
             setNotification(['','red'])
           }, 3000)
