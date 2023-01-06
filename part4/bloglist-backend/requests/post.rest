@@ -7,3 +7,14 @@ Content-Type: application/json
   "url": "http://does.not.exist",
   "likes": 4
 }
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Blog 2",
+  "author": "Anonymous 2",
+  "url": "http://does.not.exist2",
+  "likes": 6
+}

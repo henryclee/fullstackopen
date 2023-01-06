@@ -17,8 +17,6 @@ const totalLikes = (blogs) => {
 const favoriteBlog = (blogs) => {
   const favorite = blogs
     .reduce((max, curr) => {
-      console.log(max.likes)
-      console.log(curr.likes)
       return (curr.likes > max.likes
         ? curr
         : max)
