@@ -1,0 +1,35 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwiaWQiOiI2M2JhNDFhNGQ1OGJjMGFhNDM1NmI5YzUiLCJpYXQiOjE2NzMxNTA5NTF9.Duz_unLB4A8lG7AGlPPbF53G7nxeawzrF8drc1-jBls
+
+{
+  "title": "Blog 1",
+  "author": "Anonymous",
+  "url": "http://does.not.exist",
+  "likes": 4
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwiaWQiOiI2M2JhNDFhNGQ1OGJjMGFhNDM1NmI5YzUiLCJpYXQiOjE2NzMxNTA5NTF9.Duz_unLB4A8lG7AGlPPbF53G7nxeawzrF8drc1-jBls
+
+{
+  "title": "Blog 2",
+  "author": "Anonymous 2",
+  "url": "http://does.not.exist2",
+  "likes": 6
+}
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer invalidGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwiaWQiOiI2M2I5Y2Q0ODQ1MjFmNzM0OTk0ZDEyYTEiLCJpYXQiOjE2NzMxNDEwMzZ9.856IQQhacFu8vYEMBNAbJ8eZv84FQ1gfHDAP3Ac5G5E
+
+{
+  "title": "Blog 1",
+  "author": "Anonymous",
+  "url": "http://does.not.exist",
+  "likes": 4
+}
