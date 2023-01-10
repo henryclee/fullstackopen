@@ -31,6 +31,13 @@ const createBlog = (props) => {
     
 }
 
-const blogService = {getAll, setToken, createBlog}
+const updateBlog = (id, newObject) => {
+
+  const request = axios.put(`${baseUrl}/${id}`, newObject)
+  return request.then(response => response.data)
+
+}
+
+const blogService = {getAll, setToken, createBlog, updateBlog}
 
 export default blogService
