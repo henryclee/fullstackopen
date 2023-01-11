@@ -96,6 +96,15 @@ const App = () => {
     setBlogs(newBlogList)
   }
 
+  const deleteBlog = async (blog) => {
+    if (window.confirm(`Remove ${blog.title} by ${blog.author}`)){
+      const response =  await blogService.deleteBlog(blog.id)
+      if (response === 204) {
+        setBlogs(blogs.filter(b => (b.id !== blog.id)))
+      }
+    }
+  }
+
   const loginFormRef = useRef()
 
   const loginForm = () => (
@@ -115,11 +124,12 @@ const App = () => {
     
     <BlogForm 
       notification = {notification}
-      username = {user.name}
+      user = {user}
       logout = {logout}
       addBlog = {addBlog}
       blogs = {blogs}
       addLike = {addLike}
+      deleteBlog = {deleteBlog}
     />
       
   )

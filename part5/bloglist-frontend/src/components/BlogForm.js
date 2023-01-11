@@ -5,11 +5,12 @@ import Togglable from './Togglable'
 
 const BlogForm = ({
   notification,
-  username,
+  user,
   logout,
   addBlog,
   blogs,
-  addLike
+  addLike,
+  deleteBlog
 }) => {
 
   // Create blog states
@@ -36,7 +37,7 @@ const BlogForm = ({
     <h2>blogs</h2>
     <Notification notification ={notification}/>
     <p>
-      {username} logged in
+      {user.name} logged in
       <button onClick = {logout}>logout</button>
     </p>
     <Togglable buttonLabel = 'new blog' ref = {blogFormRef}>
@@ -68,9 +69,21 @@ const BlogForm = ({
 
     </Togglable>
     
-    {blogs.map(blog =>
-      <Blog key={blog.id} blog={blog} addLike = {addLike} />
-    )}
+    {blogs
+      .sort((bloga,blogb) => (
+        bloga.likes > blogb.likes
+        ? -1
+        : 1
+      ))
+      .map(blog =>
+        <Blog 
+          key={blog.id} 
+          blog={blog}
+          user = {user}
+          addLike = {addLike}
+          deleteBlog = {deleteBlog}
+        />)
+    }
   </div>
   )
 }
