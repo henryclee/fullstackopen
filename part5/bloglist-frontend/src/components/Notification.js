@@ -1,4 +1,4 @@
-const Notification = ({notification}) => {
+const Notification = ({ notification }) => {
 
   if (notification[0] === '') {
     return null

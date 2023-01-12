@@ -28,14 +28,13 @@ const createBlog = (props) => {
 
   const request = axios.post(baseUrl, blog, configObject)
   return request.then(response => response.data)
-    
+
 }
 
 const updateBlog = (id, newObject) => {
 
   const request = axios.put(`${baseUrl}/${id}`, newObject)
   return request.then(response => response.data)
-
 }
 
 const deleteBlog = (id) => {
@@ -51,6 +50,6 @@ const deleteBlog = (id) => {
 
 }
 
-const blogService = {getAll, setToken, createBlog, updateBlog, deleteBlog}
+const blogService = { getAll, setToken, createBlog, updateBlog, deleteBlog }
 
 export default blogService

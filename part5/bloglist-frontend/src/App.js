@@ -16,11 +16,11 @@ const App = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  
+
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
-    )  
+    )
   }, [])
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const App = () => {
       setUsername('')
       setPassword('')
 
-    } 
+    }
     catch (exception) {
       setNotification([
         'wrong username or password',
@@ -75,22 +75,29 @@ const App = () => {
       `a new blog ${blogObject.title} by ${blogObject.author} added`,
       'green'
     ])
-    setTimeout(()=> {
+    setTimeout(() => {
       setNotification(['','red'])
     }, 3000)
   }
 
   const addLike = async (blog) => {
-    const updatedBlog = {
-      title: blog.title,
-      author: blog.author,
-      url: blog.url,
-      likes: blog.likes + 1,
-      user: blog.user
+
+    const updatedLikes = {
+      likes: blog.likes+1
     }
-    const response = await blogService.updateBlog(blog.id, updatedBlog)
+    const response = await blogService.updateBlog(blog.id, updatedLikes)
+
+    const updatedBlog = {
+      ...response,
+      user: {
+        name: blog.user.name,
+        username: blog.user.username,
+        id: blog.user.id
+      }
+    }
+
     const newBlogList = blogs.map((blog) => {
-      if (blog.id === response.id) return response
+      if (blog.id === response.id) return updatedBlog
       return blog
     })
     setBlogs(newBlogList)
@@ -110,19 +117,19 @@ const App = () => {
   const loginForm = () => (
     <Togglable buttonLabel = 'login' ref = {loginFormRef}>
       <LoginForm
-          notification = {notification}
-          handleLogin = {handleLogin}
-          username = {username}
-          setUsername = {setUsername}
-          password = {password}
-          setPassword = {setPassword}
+        notification = {notification}
+        handleLogin = {handleLogin}
+        username = {username}
+        setUsername = {setUsername}
+        password = {password}
+        setPassword = {setPassword}
       />
     </Togglable>
   )
 
   const blogForm = () => (
-    
-    <BlogForm 
+
+    <BlogForm
       notification = {notification}
       user = {user}
       logout = {logout}
@@ -131,9 +138,9 @@ const App = () => {
       addLike = {addLike}
       deleteBlog = {deleteBlog}
     />
-      
+
   )
-  
+
 
   return (
     <div>

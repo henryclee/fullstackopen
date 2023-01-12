@@ -1,7 +1,8 @@
 import Notification from './Notification'
 import Blog from './Blog'
-import {useState, useRef} from 'react'
+import { useState, useRef } from 'react'
 import Togglable from './Togglable'
+import PropTypes from 'prop-types'
 
 const BlogForm = ({
   notification,
@@ -31,61 +32,74 @@ const BlogForm = ({
   }
 
   const blogFormRef = useRef()
-  
-  return (
-  <div>
-    <h2>blogs</h2>
-    <Notification notification ={notification}/>
-    <p>
-      {user.name} logged in
-      <button onClick = {logout}>logout</button>
-    </p>
-    <Togglable buttonLabel = 'new blog' ref = {blogFormRef}>
-    
-      <h2>create new</h2>
-      <form onSubmit={createBlog}>
-        <div>
-          title: <input
-            type = "text"
-            value = {title}
-            name = "Title"
-            onChange = {({target}) => setTitle(target.value)}
-          /><br/>
-          author: <input
-            type = "text"
-            value = {author}
-            name = "Title"
-            onChange = {({target}) => setAuthor(target.value)}
-          /><br/>
-          url: <input
-            type = "text"
-            value = {url}
-            name = "Title"
-            onChange = {({target}) => setUrl(target.value)}
-          /><br/>
-        </div>
-        <button type = "submit">create</button>
-      </form>
 
-    </Togglable>
-    
-    {blogs
-      .sort((bloga,blogb) => (
-        bloga.likes > blogb.likes
-        ? -1
-        : 1
-      ))
-      .map(blog =>
-        <Blog 
-          key={blog.id} 
-          blog={blog}
-          user = {user}
-          addLike = {addLike}
-          deleteBlog = {deleteBlog}
-        />)
-    }
-  </div>
+  return (
+    <div>
+      <h2>blogs</h2>
+      <Notification notification ={notification}/>
+      <p>
+        {user.name} logged in
+        <button onClick = {logout}>logout</button>
+      </p>
+      <Togglable buttonLabel = 'new blog' ref = {blogFormRef}>
+
+        <h2>create new</h2>
+        <form onSubmit={createBlog}>
+          <div>
+          title: <input
+              type = "text"
+              value = {title}
+              name = "Title"
+              placeholder = "Title"
+              onChange = {({ target }) => setTitle(target.value)}
+            /><br/>
+          author: <input
+              type = "text"
+              value = {author}
+              name = "Author"
+              placeholder = "Author"
+              onChange = {({ target }) => setAuthor(target.value)}
+            /><br/>
+          url: <input
+              type = "text"
+              value = {url}
+              name = "Url"
+              placeholder = "Url"
+              onChange = {({ target }) => setUrl(target.value)}
+            /><br/>
+          </div>
+          <button type = "submit">create</button>
+        </form>
+
+      </Togglable>
+
+      {blogs
+        .sort((bloga,blogb) => (
+          bloga.likes > blogb.likes
+            ? -1
+            : 1
+        ))
+        .map(blog =>
+          <Blog
+            key={blog.id}
+            blog={blog}
+            user = {user}
+            addLike = {addLike}
+            deleteBlog = {deleteBlog}
+          />)
+      }
+    </div>
   )
+}
+
+BlogForm.propTypes = {
+  notification: PropTypes.array.isRequired,
+  user: PropTypes.any.isRequired,
+  logout: PropTypes.func.isRequired,
+  addBlog: PropTypes.func.isRequired,
+  blogs: PropTypes.array.isRequired,
+  addLike: PropTypes.func.isRequired,
+  deleteBlog: PropTypes.func.isRequired
 }
 
 export default BlogForm
