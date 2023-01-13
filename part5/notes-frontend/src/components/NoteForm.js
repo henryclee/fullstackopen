@@ -12,7 +12,7 @@ const NoteForm = ({ createNote }) => {
     event.preventDefault()
     createNote({
       content: newNote,
-      important: Math.random() > .5
+      important: false
     })
 
     setNewNote('')

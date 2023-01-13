@@ -17,7 +17,6 @@ test ('check that sending form has correct props', async() => {
     blogs = {[]}
     addLike = {() => {}}
     deleteBlog = {() => {}}
-
   />)
 
   //screen.debug()
