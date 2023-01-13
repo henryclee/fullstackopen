@@ -23,6 +23,7 @@ const Blog = ({ user, blog, addLike, deleteBlog }) => {
           {blog.url} <br/>
           {blog.likes}
           <button
+            id = 'addLikes-button'
             onClick = {() => addLike(blog)}
             placeholder = 'likeButton'
           >
@@ -31,6 +32,7 @@ const Blog = ({ user, blog, addLike, deleteBlog }) => {
           {blog.user.username} <br/>
           {user.username === blog.user.username ?
             <button
+              id = 'remove-button'
               style = {removeStyle}
               onClick = {() => deleteBlog(blog)}
             >

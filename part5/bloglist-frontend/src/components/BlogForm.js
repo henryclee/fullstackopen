@@ -47,6 +47,7 @@ const BlogForm = ({
         <form onSubmit={createBlog}>
           <div>
           title: <input
+              id = "title"
               type = "text"
               value = {title}
               name = "Title"
@@ -54,6 +55,7 @@ const BlogForm = ({
               onChange = {({ target }) => setTitle(target.value)}
             /><br/>
           author: <input
+              id = "author"
               type = "text"
               value = {author}
               name = "Author"
@@ -61,6 +63,7 @@ const BlogForm = ({
               onChange = {({ target }) => setAuthor(target.value)}
             /><br/>
           url: <input
+              id = "url"
               type = "text"
               value = {url}
               name = "Url"
@@ -68,7 +71,7 @@ const BlogForm = ({
               onChange = {({ target }) => setUrl(target.value)}
             /><br/>
           </div>
-          <button type = "submit">create</button>
+          <button id = "create-button" type = "submit">create</button>
         </form>
 
       </Togglable>
