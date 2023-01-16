@@ -1,0 +1,30 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": "VS Code REST client is pretty good",
+    "important": false,
+    "userId": "63b8627e3c96036e43081f42"
+}
+
+###
+
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": "note2",
+    "important": false,
+    "userId": "63b8627e3c96036e43081f42"
+}
+
+###
+
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjYzYjg2MjdlM2M5NjAzNmU0MzA4MWY0MiIsImlhdCI6MTY3MzAzNzAyOH0.8iVijJ0RZcL-hzJ4cNnzxW7fhU0kQpHvWZ8ltCoyTes
+
+{
+    "content": "note3",
+    "important": false
+}
